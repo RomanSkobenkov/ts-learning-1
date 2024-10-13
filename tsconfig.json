@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    /* то, в какую версию JS будет собираться проект */
+    /* но т.к. используем vite уровень поддержки определяет он */
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    /* lib подсказывает TS в какой среде он работает */
+    /* так, через DOM, он например поймёт, что ему доступны window, document и т.д. */
+    /* т.е. если TS на что-то ругается (не видит), то возможно причина здесь */
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    /* формат использования не сборки всего проекта, а анализа одного модуля */
+    /* т.е. export default написали и ts ограничился рамками этого модуля */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    /* noEmit значит, что TS сам файлы не собирает */
+    "noEmit": true,
+
+    /* Linting */
+    /* strict можно описать как объект с более мелким разбиением настроек */
+    /* strictNullChecks например */
+    /* но в целом всё рекомендуется оставлять в true, но иногда и переключают */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  /* Путь до директории с файлами TS, которые нужно анализировать */
+  /* проект может не нуждаться в анализе всех директорий, их можно исключить не указав здесь */
+  "include": ["src"]
+}
