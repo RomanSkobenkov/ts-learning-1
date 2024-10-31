@@ -1,4 +1,4 @@
-# Урок 1
+# Урок 2
 
 ```tsx
 type TUserBase = {
@@ -109,23 +109,23 @@ users.filter(isManager).map(u => u...)
 export default {};
 
 function useNumberState(initial: number) {
-    let value = initial;
+  let value = initial;
 
-    function setValue(newValue: number){
-        value = newValue;
-    }
+  function setValue(newValue: number){
+    value = newValue;
+  }
 
-    return [ value, setValue ] as const;
+  return [ value, setValue ] as const;
 }
 
 function useStringState(initial: string) {
-    let value = initial;
+  let value = initial;
 
-    function setValue(newValue: string){
-        value = newValue;
-    }
+  function setValue(newValue: string){
+    value = newValue;
+  }
 
-    return [ value, setValue ] as const;
+  return [ value, setValue ] as const;
 }
 
 const [ cnt, setCnt ] = useNumberState(0);
@@ -172,13 +172,13 @@ function func<ValuelType>() {}
 
 ```tsx
 function useState<ValueType>(initial: ValueType) {
-	let value = initial;
+    let value = initial;
 
-	function setValue(newValue: ValueType){
-		value = newValue;
-	}
+    function setValue(newValue: ValueType){
+        value = newValue;
+    }
 
-	return [ value, setValue ] as const;
+    return [ value, setValue ] as const;
 }
 
 // на самом деле это сокращённая версия
@@ -198,10 +198,10 @@ const [ name, setName ] = useState<string | number>('Dmitry');
 // а вот здесь указываем тип дженерика уже явно
 // чтобы TS понимал какой объект и структура должны быть проверены
 const [ user, setUser ] = useState<TClientUser>({
-	// не даст нарушить структуру / передать неверные | неполные значения
-	type: 'client',
-	id: 1,
-	login: 'guest'
+    // не даст нарушить структуру / передать неверные | неполные значения
+    type: 'client',
+    id: 1,
+    login: 'guest'
 });
 
 /* setUser({
@@ -219,19 +219,19 @@ document.body.innerHTML = `<strong onclick="${setCnt(cnt + 1)}">${cnt.toFixed(2)
 
 ```jsx
 class Storage {
-    items: Array<object>
+  items: Array<object>
 
-    constructor(){
-        this.items = [];
-    }
+  constructor(){
+    this.items = [];
+  }
 
-    add(item: object){
-        this.items.push(item);
-    }
+  add(item: object){
+    this.items.push(item);
+  }
 
-    clean(){
-        this.items = [];
-    }
+  clean(){
+    this.items = [];
+  }
 }
 ```
 
@@ -248,19 +248,19 @@ usersList.add({ id: 1, name: 'admin', blabla: 'bla' });
 
 ```jsx
 class Storage<T> {
-    items: Array<T>
+  items: Array<T>
 
-    constructor(){
-        this.items = [];
-    }
+  constructor(){
+    this.items = [];
+  }
 
-    add(item: T){
-        this.items.push(item);
-    }
+  add(item: T){
+    this.items.push(item);
+  }
 
-    clean(){
-        this.items = [];
-    }
+  clean(){
+    this.items = [];
+  }
 }
 ```
 
@@ -346,13 +346,13 @@ let arr: [ number, (nv: number) => number ] = [ 1, (nv: number) => nv ];
 // длиннющее определение (т.к. у нас переменная + описание коллбэка) 
 // возвращаемого значения через :
 function useState<ValueType>(initial: ValueType) {
-	let value = initial;
+  let value = initial;
 
-	function setValue(newValue: ValueType){
-		value = newValue;
-	}
-	// можно просто сделать as const для return
-	return [ value, setValue ] as const;
+  function setValue(newValue: ValueType){
+    value = newValue;
+  }
+  // можно просто сделать as const для return
+  return [ value, setValue ] as const;
 }
 ```
 
@@ -390,7 +390,7 @@ const onlyNumbers = new Storage<number>();
 
 ```tsx
 class Storage<T extends { id: number }>{
-	items: Array<T>
+    items: Array<T>
 ...
 ...
 ...
@@ -400,23 +400,23 @@ class Storage<T extends { id: number }>{
 
 ```tsx
 class Storage<T extends { id: number }>{
-	items: Array<T>
+    items: Array<T>
 
-	constructor(){
-		this.items = [];
-	}
+    constructor(){
+        this.items = [];
+    }
 
-	...
+...
 
-	remove(id: number){
-		this.items = this.items.filter(i => i.id !== id);
-	}
+    remove(id: number){
+        this.items = this.items.filter(i => i.id !== id);
+    }
 
-	get(id: number){
-		return this.items.find(i => i.id === id);
-	}
+    get(id: number){
+        return this.items.find(i => i.id === id);
+    }
 
-	...
+...
 }
 ```
 
@@ -424,8 +424,8 @@ class Storage<T extends { id: number }>{
 
 ```tsx
  type Some = {
-  // нет id
-	name: string
+    // нет id
+    name: string
 }
 
 const someList = new Storage<Some>(); // будет материться
@@ -443,23 +443,23 @@ const someList = new Storage<Some>(); // будет материться
 
 ```tsx
 export type TUserBase = {
-	id: number,
-	login: string,
+    id: number,
+    login: string,
 }
 
 export type TAdminUser = TUserBase & {
-	type: 'admin',
-	accessLevel: number
+    type: 'admin',
+    accessLevel: number
 }
 
 export type TManagerUser = TUserBase & {
-	type: 'manager',
-	accessLevel: number,
-	roles: string[]
+    type: 'manager',
+    accessLevel: number,
+    roles: string[]
 }
 
 export type TClientUser = TUserBase & {
-	type: 'client'
+    type: 'client'
 }
 ```
 
@@ -467,9 +467,9 @@ export type TClientUser = TUserBase & {
 
 ```tsx
 export type TManagerUser = TUserBase & {
-	type: 'manager',
-	accessLevel: number,
-	roles: string[]
+    type: 'manager',
+    accessLevel: number,
+    roles: string[]
 }
 
 let bla: TManagerUser['accessLevel'] = 4; // только number
@@ -481,7 +481,7 @@ let bla: TManagerUser['accessLevel'] = 4; // только number
 
 https://www.typescriptlang.org/docs/handbook/utility-types.html
 
-## **Required<Type>**
+## **`Required<Type>`**
 
 Позволяет сказать, что все параметры в объекте обязательны. Пример:
 
@@ -496,7 +496,7 @@ const obj: Props = { a: 5 }; // всё ок
 const obj2: Required<Props> = { a: 5 }; // ошибка, т.к. теперь a и b обязательны
 ```
 
-## **ReturnType<Type>**
+## **`ReturnType<Type>`**
 
 Допустим у нас есть переменная, которая пока `null`, но в будущем мы хотим положить в неё то, что возвращает функция. Вот как это можно сделать:
 
@@ -521,7 +521,7 @@ const some: ReturnType<typeof loadUsers> | null = null
 
 !https://i.imgur.com/hT3kh2r.png
 
-## **Extract<Type, Union>**
+## **`Extract<Type, Union>`**
 
 Возвращает пересекающиеся значения, пример:
 
